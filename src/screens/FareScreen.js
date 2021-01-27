@@ -40,6 +40,9 @@ export default class FareScreen extends React.Component {
 
     componentDidMount() {
         var getCroods = this.props.navigation.getParam('data');
+
+        console.log(getCroods);
+
         var carType = this.props.navigation.getParam('carType');
         var carImage = this.props.navigation.getParam('carimage');
         const Data = firebase.database().ref('rates/');
@@ -288,8 +291,9 @@ export default class FareScreen extends React.Component {
                                                             //calculate the distance of two locations
                                                             var distance = GeoFire.distance(location1, location2);
                                                             var originalDistance = (distance);
-                                                            if (originalDistance <= 10) { // Request will be send if distance less than 10 km 
+                                                            if (originalDistance <= 50) { // Request will be send if distance less than 10 km 
                                                                 if (allUsers[key].carType == this.state.carType) {
+                                                                    console.log(allUsers[key]);
                                                                     allUsers[key].driverUid = key;
                                                                     arr.push(allUsers[key].driverUid);
                                                                     firebase.database().ref('users/' + allUsers[key].driverUid + '/waiting_riders_list/' + bookingKey + '/').set(data);
@@ -608,7 +612,7 @@ export default class FareScreen extends React.Component {
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.dropButton}>
                             <View style={styles.whereContainer}>
-                                <Text numberOfLines={1} style={styles.whereText}>{this.state.region.droptext}</Text>
+                                <Text numberOfLines={1} style={styles.whereText}>{this.state.region.dropText}</Text>
                                 <Icon
                                     name='search'
                                     type='feather'

@@ -9,7 +9,6 @@ import { LoginComponent, Background, ForgotPassModal } from '../components';
 import { colors } from '../common/theme';
 import * as firebase from 'firebase'
 import * as Facebook from 'expo-facebook';
-import { Button } from 'react-native-elements';
 import languageJSON from '../common/language';
 import * as AppleAuthentication from 'expo-apple-authentication';
 import * as Crypto from "expo-crypto";
@@ -64,7 +63,8 @@ export default class LoginScreen extends Component {
   //on press login after all validation
   async onPressLogin(email, password) {
     firebase.auth().signInWithEmailAndPassword(email, password)
-      .then(res => {
+      .then(_ => {
+        this.props.navigation.navigate('Map');
       }).catch(res => {
         alert(res.message);
       })

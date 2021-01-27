@@ -18,29 +18,29 @@ export class AuthLoadingScreen extends React.Component {
   }
 
   // Fetch the token from storage then navigate to our appropriate place
-  bootstrapAsync =  () => {
-    firebase.auth().onAuthStateChanged((user)=>{
-      if(user && user.displayName){
-        const userData = firebase.database().ref('users/'+user.uid);
-        userData.once('value',userData=>{
-          if(userData.val() && userData.val().usertype == 'rider'){
-                      this.props.navigation.navigate('Root'); 
-                      GetPushToken();
-                     }
-                     else{ 
-                      this.props.navigation.navigate('Auth');
-                     }
+  bootstrapAsync = () => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user && user.displayName) {
+        const userData = firebase.database().ref('users/' + user.uid);
+        userData.once('value', userData => {
+          if (userData.val() && userData.val().usertype == 'rider') {
+            this.props.navigation.navigate('Root');
+            GetPushToken();
+          }
+          else {
+            this.props.navigation.navigate('Auth');
+          }
         })
-      }else{
-              this.props.navigation.navigate('Auth');
-            }
+      } else {
+        this.props.navigation.navigate('Auth');
+      }
     })
 
   };
 
 
-  componentDidMount(){
-    
+  componentDidMount() {
+
     this._notificationSubscription = Notifications.addListener(this._handleNotification);
   }
 
@@ -49,18 +49,18 @@ export class AuthLoadingScreen extends React.Component {
 
     const soundObject = new Audio.Sound();
     try {
-      await soundObject.loadAsync(require('../../assets/sounds/car_horn.wav')); 
+      await soundObject.loadAsync(require('../../assets/sounds/car_horn.wav'));
       await soundObject.playAsync();
     } catch (error) {
       console.log("Unable to play shound");
     }
-   };
+  };
 
   // Render any loading content that you like here
   render() {
     return (
       <View style={styles.IndicatorStyle}>
-        <ActivityIndicator  size="large" />
+        <ActivityIndicator size="large" />
       </View>
     );
   }
@@ -68,8 +68,8 @@ export class AuthLoadingScreen extends React.Component {
 
 //Screen Styling
 const styles = StyleSheet.create({
-  IndicatorStyle:{
-    flex:1, 
-    justifyContent:"center"
+  IndicatorStyle: {
+    flex: 1,
+    justifyContent: "center"
   }
 })
