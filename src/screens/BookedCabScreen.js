@@ -53,7 +53,6 @@ export default class BookedCabScreen extends React.Component {
         let bookingResponse = firebase.database().ref(`users/` + curuser.uid + '/my-booking/' + this.getParamData.bokkingId);
 
         firebase.database().ref().child("bookings/" + this.getParamData.bokkingId).on('value', data => {
-            console.log("UPDATEDDDDDDDDDDDDDDDDDD");
             const element = data.val();
 
             if (element?.status == "CANCELLED") {
@@ -135,12 +134,7 @@ export default class BookedCabScreen extends React.Component {
                 }
             })
             this.setState({ coords: coords }, () => {
-                // setTimeout(() => {
-                //     this.map.fitToCoordinates([{latitude: this.state.region.wherelatitude, longitude: this.state.region.wherelongitude}, {latitude: this.state.region.droplatitude, longitude: this.state.region.droplongitude}], {
-                //         edgePadding: { top: 40, right: 40, bottom: 40, left: 40 },
-                //         animated: true,
-                //      })  
-                // }, 1500);
+
             })
             return coords
         }
@@ -182,7 +176,7 @@ export default class BookedCabScreen extends React.Component {
                             let count = 0;
                             for (i = 0; i < requetedDrivers.length; i++) {
                                 firebase.database().ref(`/users/` + requetedDrivers[i] + '/waiting_riders_list/' + this.state.currentBookingId + '/').remove();
-                                count = count + 1;
+                                count ++;
                             }
                             if (count == requetedDrivers.length) {
                                 firebase.database().ref('bookings/' + this.state.currentBookingId + '/requestedDriver/').remove();
