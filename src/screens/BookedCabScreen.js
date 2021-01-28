@@ -343,7 +343,6 @@ sendPushNotification(customerUID,bookingId,msg){
             backgroundColor={colors.GREY.default}
             leftComponent={{icon:'md-menu', type:'ionicon', color:colors.WHITE, size: 30, component: TouchableWithoutFeedback,onPress: ()=>{this.props.navigation.toggleDrawer();} }}
             centerComponent={<Text style={styles.headerTitleStyle}>{languageJSON.booked_cab_title}</Text>}
-            // rightComponent={{icon:'ios-notifications', type:'ionicon', color:colors.WHITE, size: 30, component: TouchableWithoutFeedback,onPress: ()=>{this.props.navigation.navigate('Notifications');} }}
             containerStyle={styles.headerStyle}
             innerContainerStyles={styles.headerInner}
         />
@@ -384,7 +383,7 @@ sendPushNotification(customerUID,bookingId,msg){
         <View style={styles.mapcontainer}>
             {this.state.driverUID && this.state.region && this.state.bookingStatus?
         <TrackNow duid={this.state.driverUID} alldata={this.state.region} bookingStatus = {this.state.bookingStatus}/>:null}
-            {/* <MapView
+            <MapView
                 ref={map => { this.map = map }}
                 style={styles.map} 
                 provider={PROVIDER_GOOGLE}
@@ -419,7 +418,7 @@ sendPushNotification(customerUID,bookingId,msg){
             />
 :null} 
 
-            </MapView> */}
+            </MapView>
 
 
 

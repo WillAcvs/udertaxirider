@@ -416,7 +416,7 @@ export default class FareScreen extends React.Component {
                                                         //calculate the distance of two locations
                                                         var distance = GeoFire.distance(location1, location2);
                                                         var originalDistance = (distance);
-                                                        if (originalDistance < 10) {// Request will be send if distance less than 10 km 
+                                                        if (originalDistance < 50) {// Request will be send if distance less than 10 km 
                                                             if (allUsers[key].carType == this.state.carType) {
                                                                 allUsers[key].driverUid = key;
                                                                 arr.push(allUsers[key].driverUid);
@@ -490,6 +490,8 @@ export default class FareScreen extends React.Component {
         })
     }
     sendPushNotification(customerUID, bookingId, msg) {
+
+        console.log("Push to:" + customerUID);
         const customerRoot = firebase.database().ref('users/' + customerUID);
         customerRoot.once('value', customerData => {
             if (customerData.val()) {

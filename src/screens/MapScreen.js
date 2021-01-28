@@ -332,10 +332,13 @@ export default class MapScreen extends React.Component {
 
 
     selectCarType(value, key) {
+        console.log("--------------------->");
+        console.log(key);
+
         let allCars = this.state.allCars;
         for (let i = 0; i < allCars.length; i++) {
             allCars[i].active = false;
-            if (i == key) {
+            if (i == key ) {
                 allCars[i].active = true;
             }
         }
@@ -390,7 +393,7 @@ export default class MapScreen extends React.Component {
                 if (driver.location) {
                     let driverLocation = [driver.location.lat, driver.location.lng];
                     let distance = GeoFire.distance(riderLocation, driverLocation);
-                    if (distance < 10) {
+                    if (distance < 50) {
                         let destLoc = '"' + driver.location.lat + ', ' + driver.location.lng + '"';
                         driver.arriveDistance = distance;
                         driver.arriveTime = await this.getDriverTime(startLoc, destLoc);
