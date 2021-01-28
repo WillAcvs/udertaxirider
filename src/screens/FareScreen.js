@@ -6,10 +6,8 @@ import {
     Dimensions,
     TouchableOpacity,
     Text,
-    TextInput,
     Modal,
     Platform,
-    StatusBar,
     Alert,
     TouchableWithoutFeedback
 } from 'react-native';
@@ -40,9 +38,6 @@ export default class FareScreen extends React.Component {
 
     componentDidMount() {
         var getCroods = this.props.navigation.getParam('data');
-
-        console.log(getCroods);
-
         var carType = this.props.navigation.getParam('carType');
         var carImage = this.props.navigation.getParam('carimage');
         const Data = firebase.database().ref('rates/');
@@ -214,10 +209,8 @@ export default class FareScreen extends React.Component {
         const userData = firebase.database().ref('users/' + curuser + '/my-booking');
         userData.once('value', userBooking => {
             if (userBooking.val()) {
-                let userBookings = userBooking.val();
                 let flag = true;
                 if (flag == true) {
-                    console.log('this.state.region', this.state.region)
                     this.setState({ modalVisible: false }, () => {
                         var pickUp = { lat: this.state.region.wherelatitude, lng: this.state.region.wherelongitude, add: this.state.region.whereText };
                         var drop = { lat: this.state.region.droplatitude, lng: this.state.region.droplongitude, add: this.state.region.droptext };
@@ -293,11 +286,10 @@ export default class FareScreen extends React.Component {
                                                             var originalDistance = (distance);
                                                             if (originalDistance <= 50) { // Request will be send if distance less than 10 km 
                                                                 if (allUsers[key].carType == this.state.carType) {
-                                                                    console.log(allUsers[key]);
                                                                     allUsers[key].driverUid = key;
-                                                                    arr.push(allUsers[key].driverUid);
-                                                                    firebase.database().ref('users/' + allUsers[key].driverUid + '/waiting_riders_list/' + bookingKey + '/').set(data);
-                                                                    this.sendPushNotification(allUsers[key].driverUid, bookingKey, languageJSON.new_booking_request_push_notification)
+                                                                    arr.push(key);
+                                                                    firebase.database().ref('users/' + key + '/waiting_riders_list/' + bookingKey + '/').set(data);
+                                                                    this.sendPushNotification(key, bookingKey, languageJSON.new_booking_request_push_notification)
                                                                 }
                                                             }
                                                         }
@@ -419,10 +411,10 @@ export default class FareScreen extends React.Component {
                                                         if (originalDistance < 50) {// Request will be send if distance less than 10 km 
                                                             if (allUsers[key].carType == this.state.carType) {
                                                                 allUsers[key].driverUid = key;
-                                                                arr.push(allUsers[key].driverUid);
+                                                                arr.push(key);
                                                                 //console.log("Driver user id",allUsers[key].driverUid);
-                                                                firebase.database().ref('users/' + allUsers[key].driverUid + '/waiting_riders_list/' + bookingKey + '/').set(data); //send request to driver who are available
-                                                                this.sendPushNotification(allUsers[key].driverUid, bookingKey, languageJSON.new_booking_request_push_notification)
+                                                                firebase.database().ref('users/' + key + '/waiting_riders_list/' + bookingKey + '/').set(data); //send request to driver who are available
+                                                                this.sendPushNotification(key, bookingKey, languageJSON.new_booking_request_push_notification)
                                                             }
                                                         }
                                                     }
