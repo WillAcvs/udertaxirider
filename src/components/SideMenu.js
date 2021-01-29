@@ -59,6 +59,7 @@ export default class SideMenu extends React.Component{
     //sign out and clear all async storage
     async signOut() {
         firebase.auth().signOut();
+        this.props.navigation.navigate("Login");
     }
 
     //CHECKING TRIP END OR START

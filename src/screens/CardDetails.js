@@ -130,15 +130,19 @@ export default class CardDetailsScreen extends React.Component {
       // console.log('customer pay',(this.state.payDetails.amount - this.state.payDetails.discount))
       // console.log('Used Wallet amount -',this.state.usedWalletAmmount?this.state.usedWalletAmmount:0);
       // console.log('used cash-', this.state.payDetails.payableAmmount);
-
       let paramData = this.state.userData;
+
+      firebase.database().ref().child("bookings/" + paramData.bookingKey).on("value", doc => {
+        const element = doc.val();
+
       firebase.database().ref('users/' + paramData.driver + '/my_bookings/' + paramData.bookingKey + '/').update({
         payment_status: "PAID",
         payment_mode: paymentMode,
         customer_paid: this.state.payDetails.amount - this.state.payDetails.discount,
         discount_amount: this.state.payDetails.discount,
         usedWalletMoney: this.state.usedWalletAmmount ? this.state.usedWalletAmmount : 0,
-        cashPaymentAmount: paymentMode == 'Wallet' ? 0 : this.state.payDetails.payableAmmount
+        cashPaymentAmount: paymentMode == 'Wallet' ? 0 : this.state.payDetails.payableAmmount,
+        ...element,
       }).then(() => {
         firebase.database().ref('users/' + firebase.auth().currentUser.uid + '/my-booking/' + paramData.bookingKey + '/').update({
           payment_status: "PAID",
@@ -146,7 +150,8 @@ export default class CardDetailsScreen extends React.Component {
           customer_paid: this.state.payDetails.amount - this.state.payDetails.discount,
           discount_amount: this.state.payDetails.discount,
           usedWalletMoney: this.state.usedWalletAmmount ? this.state.usedWalletAmmount : 0,
-          cashPaymentAmount: paymentMode == 'Wallet' ? 0 : this.state.payDetails.payableAmmount
+          cashPaymentAmount: paymentMode == 'Wallet' ? 0 : this.state.payDetails.payableAmmount,
+          ...element,
         }).then(() => {
           firebase.database().ref('bookings/' + paramData.bookingKey + '/').update({
             payment_status: "PAID",
@@ -154,7 +159,8 @@ export default class CardDetailsScreen extends React.Component {
             customer_paid: this.state.payDetails.amount - this.state.payDetails.discount,
             discount_amount: this.state.payDetails.discount,
             usedWalletMoney: this.state.usedWalletAmmount ? this.state.usedWalletAmmount : 0,
-            cashPaymentAmount: paymentMode == 'Wallet' ? 0 : this.state.payDetails.payableAmmount
+            cashPaymentAmount: paymentMode == 'Wallet' ? 0 : this.state.payDetails.payableAmmount,
+            ...element,
           }).then(() => {
             this.setState({ loadingModal: false });
             if (this.state.usedWalletAmmount) {
@@ -180,6 +186,7 @@ export default class CardDetailsScreen extends React.Component {
         })
 
       })
+      });
     }
 
   }
