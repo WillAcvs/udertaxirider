@@ -1,68 +1,68 @@
 {
-  "expo": {
-    "name": "Uder",
-    "description": "Uder Taxi User App",
-    "slug": "Uder",
-    "privacy": "public",
-    "platforms": [
-      "ios",
-      "android"
-    ],
-    "notification": {
-      "icon": "./assets/images/push_notification.png"
-    },
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/images/appIcon.png",
-    "splash": {
-      "image": "./assets/images/splash.png",
-      "resizeMode": "cover",
-      "backgroundColor": "#ffffff"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": [
-      "assets/*"
-    ],
-    "ios": {
-      "supportsTablet": true,
-      "usesAppleSignIn": true,
-      "bundleIdentifier": "com.user.uder",
-      "infoPlist": {
-        "NSLocationAlwaysUsageDescription": "Esta aplicación usa la ubicación para encontrar los taxis cerca de usted.",
-        "NSLocationWhenInUseUsageDescription": "Esta aplicación usa la ubicación para encontrar los taxis cerca de usted.",
-        "NSCameraUsageDescription": "Esta aplicación usa la cámara para tomar tu foto de perfil.",
-        "NSPhotoLibraryUsageDescription": "Esta aplicación utiliza la biblioteca de fotos para cargar su foto de perfil.",
-        "UIBackgroundModes": [
-          "location",
-          "fetch"
-        ]
-      },
-      "config": {
-        "googleMapsApiKey": "AIzaSyB2tjARQd4izKAbLIggavmCZsykqn1M13Q"
-      }
-    },
-    "android": {
-      "package": "com.user.uder",
-      "versionCode": 1,
-      "permissions": [
-        "CAMERA",
-        "READ_EXTERNAL_STORAGE",
-        "WRITE_EXTERNAL_STORAGE",
-        "LOCATION",
-        "ACCESS_FINE_LOCATION",
-        "ACCESS_COARSE_LOCATION",
-        "CAMERA_ROLL"
-      ],
-      "config": {
-        "googleMaps": {
-          "apiKey": "AIzaSyB2tjARQd4izKAbLIggavmCZsykqn1M13Q"
-        }
-      }
-    },
-    "facebookScheme": "fb377638786648024",
-    "facebookAppId": "377638786648024",
-    "facebookDisplayName": "uderapp"
-  }
+    "expo": {
+        "name": "Uder",
+        "description": "Uder Taxi User App",
+        "slug": "Uder",
+        "privacy": "public",
+        "platforms": [
+            "ios",
+            "android"
+        ],
+        "notification": {
+            "icon": "./assets/images/push_notification.png"
+        },
+        "version": "1.1.0",
+        "orientation": "portrait",
+        "icon": "./assets/images/appIcon.png",
+        "splash": {
+            "image": "./assets/images/splash.png",
+            "resizeMode": "cover",
+            "backgroundColor": "#ffffff"
+        },
+        "updates": {
+            "fallbackToCacheTimeout": 0
+        },
+        "assetBundlePatterns": [
+            "assets/*"
+        ],
+        "ios": {
+            "supportsTablet": true,
+            "usesAppleSignIn": true,
+            "bundleIdentifier": "com.user.uder",
+            "infoPlist": {
+                "NSLocationAlwaysUsageDescription": "Esta aplicación usa la ubicación para encontrar los taxis cerca de usted.",
+                "NSLocationWhenInUseUsageDescription": "Esta aplicación usa la ubicación para encontrar los taxis cerca de usted.",
+                "NSCameraUsageDescription": "Esta aplicación usa la cámara para tomar tu foto de perfil.",
+                "NSPhotoLibraryUsageDescription": "Esta aplicación utiliza la biblioteca de fotos para cargar su foto de perfil.",
+                "UIBackgroundModes": [
+                    "location",
+                    "fetch"
+                ]
+            },
+            "config": {
+                "googleMapsApiKey": "AIzaSyB2tjARQd4izKAbLIggavmCZsykqn1M13Q"
+            }
+        },
+        "android": {
+            "package": "com.user.uder",
+            "versionCode": 2,
+            "permissions": [
+                "CAMERA",
+                "READ_EXTERNAL_STORAGE",
+                "WRITE_EXTERNAL_STORAGE",
+                "LOCATION",
+                "ACCESS_FINE_LOCATION",
+                "ACCESS_COARSE_LOCATION",
+                "CAMERA_ROLL"
+            ],
+            "config": {
+                "googleMaps": {
+                    "apiKey": "AIzaSyB2tjARQd4izKAbLIggavmCZsykqn1M13Q"
+                }
+            }
+        },
+        "facebookScheme": "fb377638786648024",
+        "facebookAppId": "377638786648024",
+        "facebookDisplayName": "uderapp"
+    }
 }
