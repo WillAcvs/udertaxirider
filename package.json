@@ -28,6 +28,7 @@
     "react-dom": "16.11.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.2.tar.gz",
     "react-native-actionsheet": "2.4.2",
+    "react-native-awesome-alerts": "^1.4.2",
     "react-native-credit-card-input": "0.4.1",
     "react-native-dash": "0.0.11",
     "react-native-elements": "1.2.7",
@@ -47,7 +48,8 @@
     "react-navigation-stack": "1.10.3"
   },
   "devDependencies": {
-    "babel-preset-expo": "^8.3.0"
+    "babel-preset-expo": "^8.3.0",
+    "react-native-flash-message": "^0.1.22"
   },
   "private": true
 }

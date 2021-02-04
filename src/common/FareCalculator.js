@@ -12,7 +12,6 @@ export function farehelper(distance,time,rateDetails){
     
 
     let grandtotal = parseFloat(total)+parseFloat(convenienceFee);
-    console.log(grandtotal)
     let calculateData = {
         distaceRate:estimateRateForKM,
         timeRate:estimateRateForhour,
