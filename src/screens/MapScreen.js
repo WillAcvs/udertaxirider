@@ -473,18 +473,11 @@ export default class MapScreen extends React.Component {
 
   showNoDriverAlert() {
     if (this.state.checkCallLocation == 'navigation') {
-      Alert.alert(
-        languageJSON.no_driver_found_alert_title,
-        languageJSON.no_driver_found_alert_messege,
-        [
-          {
-            text: languageJSON.no_driver_found_alert_OK_button,
-            onPress: () => this.setState({ loadingModal: false }),
-          },
-          { text: languageJSON.no_driver_found_alert_TRY_AGAIN_button, onPress: () => { this._getLocationAsync() }, style: 'cancel', },
-        ],
-        { cancelable: true },
-      )
+      showMessage({
+        message: "Cargando ...",
+        description: "Estamos buscando conductores",
+        type: "success"
+      });
     }
 
   }
