@@ -81,7 +81,7 @@ export default class BookedCabScreen extends React.Component {
             );
         } else {
           showMessage({
-            message: "Actualizndo Ubicacion del Conductor",
+            message: "Ubicando Conductores Cercanos",
             type: "info"
           });
           return;
@@ -463,13 +463,13 @@ export default class BookedCabScreen extends React.Component {
               this.state.driverLocation && (
                 <Marker
                   coordinate={{ latitude: this.state.driverLocation.latitude, longitude: this.state.driverLocation.longitude }}
-                  title={"Conductor"}
+                  title={"El Conductor"}
                   ref={currentRef => {
                     if (!!currentRef) {
                       currentRef.showCallout();
                     }
                   }}
-                  description={'A: ' + (this.state.driverLocation.time) + " Minutos de Ti"}
+                  description={'Llegará en ' + (this.state.driverLocation.time) + " Minutos"}
                   pinColor={colors.GREEN.default}
                   image={require('../../assets/images/track_Car.png')}
 
